@@ -7,7 +7,6 @@ uav = {
 environment_parameters={
     'k_0': 5,           # value of Rician factor at 0 radian elevation angle, in dB
     'k_90': 15,         # value of Rician factor at pi/2 radian elevation angle, in dB 
-    'g_dB': -34.89,     # channel gain at a distance of 1 meter in dB
     'a': 11.95,         # parameter for urban environment
     'b': 0.136,         # parameter for urban environment
     'eta': 20,          # excessive attenuation factor for Non-LoS links, in dB

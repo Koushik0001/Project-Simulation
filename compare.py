@@ -1,4 +1,3 @@
-# This  Python script is used to generate rician channel coefficients
 import math
 import numpy as np
 from numpy.random import standard_normal
