@@ -1,6 +1,5 @@
 import math
 import numpy as np
-from numpy.random import standard_normal
 import simu_NOMA
 import simu_OMA
 import csv

@@ -1,6 +1,6 @@
 uav = {
     'coordinate': (0, 0),
-    'height': 300,                      # in meters
+    'height': 100,                      # in meters
     'service_classes': [1, 3, 5, 20]    # data rate in different service classes
 }
 
@@ -17,5 +17,5 @@ environment_parameters={
 system_parameters={
     'B': 180000,            # PRB bandwidth in Hz
     'total_BW': 15000000,    # total bandwidth in Hz
-    'cell_redius': 400        # in meters  
+    'cell_redius': 150        # in meters  
 }
