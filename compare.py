@@ -35,8 +35,6 @@ while i<no_users and extra_users > 0:
     extra_users -= 1
     i += 1
 
-print(users_in_sclass)
-
 # generating user data
 uniform_coordinates = generate_uniform_points_in_circle(no_users, system_parameters['cell_redius'])
 users = []
@@ -45,33 +43,42 @@ i = 0
 for s in range(no_service_classes):
     for si in range(users_in_sclass[s]):
         user = dict()
+        
         user['coordinate'] = uniform_coordinates[i]
         user['th_data_rate'] = uav['service_classes'][s] * 1e6
-        K = get_rician_factor(user['coordinate'][0], user['coordinate'][1])
-        h_mag_sq = ssf.generate_sample(K)
+        
         d = math.sqrt(user['coordinate'][0] ** 2 + user['coordinate'][1] ** 2 + uav['height'] ** 2)
-        H_linear = (10 ** (environment_parameters['g_dB'] / 10)) * (h_mag_sq) / (d**environment_parameters['alpha'])
-        user['H_db'] = 10 * math.log10(H_linear)
+
+        elevation_angle = (180/math.pi) * math.asin(uav['height']/d)
+        pr_los = 1 / (1 + environment_parameters['a'] * math.exp(-environment_parameters['b'] * (elevation_angle - environment_parameters['a'])))
+        g_dB = 10 * math.log10(pr_los * (d ** (-environment_parameters['alpha'])) + (1 - pr_los) * environment_parameters['eta'] * (d ** (-environment_parameters['alpha'])))
+        
+        K = get_rician_factor(user['coordinate'][0], user['coordinate'][1])
+        h_mag_sq_db = 10 * math.log10(ssf.generate_sample(K))
+        
+        
+        user['H_db'] = g_dB + h_mag_sq_db
+        
         users.append(user)
         i += 1
-print(users)
+
 
 H_db = [users[i]['H_db'] for i in range(no_users)]
 th_data_rate = [users[i]['th_data_rate'] for i in range(no_users)]
 
 
 association_matrix, power_matrix = simu_NOMA.noma_power_opt(
-    math.floor(system_parameters['total_BW'] / system_parameters['b']), 
-    system_parameters['b'], 
+    math.floor(system_parameters['total_BW'] / system_parameters['B']), 
+    system_parameters['B'], 
     environment_parameters['noise_dBm'], 
     H_db, 
     th_data_rate
 )
 
-print(power_matrix)
+
 num_prb_per_user, power_user = simu_OMA.oma_power_opt(
-    math.floor(system_parameters['total_BW'] / system_parameters['b']), 
-    system_parameters['b'], 
+    math.floor(system_parameters['total_BW'] / system_parameters['B']), 
+    system_parameters['B'], 
     environment_parameters['noise_dBm'], 
     H_db, 
     th_data_rate
@@ -90,6 +97,7 @@ if num_prb_per_user != 0:
     for i in range(0, no_users):
         total_power_oma += (10 ** (power_user[i] / 10)) * num_prb_per_user
 
-print(f"Total number of users = {no_users}")
-print(f"Total power consumed using OMA = {total_power_oma} mW")
+
+if(total_power_oma != 0):
+    print(f"Total power consumed using OMA = {total_power_oma} mW")
 print(f"Total power consumed using NOMA = {total_power_noma} mW")
