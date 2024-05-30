@@ -100,3 +100,13 @@ if num_prb_per_user != 0:
 if(total_power_oma != 0):
     print(f"Total power consumed using OMA = {total_power_oma} mW")
 print(f"Total power consumed using NOMA = {total_power_noma} mW")
+
+if(total_power_oma != 0):
+    print(f"Average power consumed per user using OMA = {total_power_oma/no_users} mW")
+print(f"Average power consumed per user using NOMA = {total_power_noma/no_users} mW")
+
+if(total_power_oma != 0):
+    print(f"Energy Efficiency (in logarithmic scale) using OMA = {math.log(sum(th_data_rate) * 1e6/total_power_oma)}")
+print(f"Energy Efficiency (in logarithmic scale) using NOMA = {math.log(sum(th_data_rate) * 1e6/total_power_noma)}")
+
+
