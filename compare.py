@@ -6,21 +6,10 @@ import simu_NOMA
 import simu_OMA
 
 from inputs import uav
+from inputs import environment_parameters, system_parameters
 from rician_factor import get_rician_factor
 import small_scale_fading as ssf
 
-
-environment_parameters={
-    'g_dB': -34.89,     # channel gain at a distance of 1 meter in dB
-    'alpha': 2,         # path loss exponent
-    'noise_dBm': -174   # noise density in dBm/Hz
-}
-
-system_parameters={
-    'b': 180000,            # PRB bandwidth in Hz
-    'total_BW': 15000000,    # total bandwidth in Hz
-    'cell_redius': 400        # in meters  
-}
 def generate_uniform_points_in_circle(n, r):
     # Generate n random angles uniformly distributed between 0 and 2*pi
     angles = np.random.uniform(0, 2 * np.pi, n)

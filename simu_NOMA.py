@@ -97,30 +97,3 @@ def noma_power_opt(PRB, b, sigma, H, R):
         i += 1
 
     return association, power
-
-
-if __name__ == "__main__":
-    n = 6
-    association, power = noma_power_opt(
-        183,
-        180000,
-        -174,
-        [
-            -6.48906303e-02,
-            -4.20153889e-02,
-            -9.34773156e-02,
-            -5.06082728e-02,
-            -1.81410630e-08,
-            -1.04016670e-01,
-        ],
-        [200, 120, 240, 120, 290, 124],
-    )
-    total_power = 0
-    for i in range(0, n):
-        for j in range(0, n):
-            total_power += association[i][j] * (
-                (10 ** (power[i][j][0] / 10)) + (10 ** (power[i][j][1] / 10))
-            )
-    print(f"Association Matrix: {association}\n")
-    print(f"Power Matrix: {power}\n")
-    print(f"Total Power consumed is: {total_power} mW")

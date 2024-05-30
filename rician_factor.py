@@ -1,12 +1,7 @@
 import math
 import numpy as np
 
-from inputs import uav
-
-environment_parameters = {
-    'k_0': 5,       # value of Rician factor at 0 radian elevation angle, in dB
-    'k_90': 15,     # value of Rician factor at pi/2 radian elevation angle, in dB 
-}
+from inputs import uav, environment_parameters
 
 a = environment_parameters['k_0']
 b = (2 / math.pi) * math.log(environment_parameters['k_90']/environment_parameters['k_0'])

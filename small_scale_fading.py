@@ -29,5 +29,5 @@ if __name__=='__main__':
     # Generate one likely sample
     # Parameters
     K_n = 2  # Rician factor
-    sample_dBm = generate_sample(K_n)
-    print(f"The generated likely sample in dBm is: {sample_dBm:.5} dBm")
+    sample = generate_sample(K_n)
+    print(f"The generated likely sample in dBm is: {sample:.2}")

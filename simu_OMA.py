@@ -31,18 +31,3 @@ def oma_power_opt(PRB, b, sigma, H, R):
 
         return v, power
 
-
-if __name__ == "__main__":
-    n = 6
-    v, power = oma_power_opt(
-        10,
-        14,
-        0.2,
-        [0.2, 0.4, 0.4, 0.6, 0.7, 0.3],
-        [200, 120, 240, 100, 90, 234],
-    )
-    total_power = 0
-    for i in range(0, n):
-        total_power += (10 ** (power[i] / 10)) * v
-    print(power)
-    print(total_power)
