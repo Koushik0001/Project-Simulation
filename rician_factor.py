@@ -1,7 +1,6 @@
 import math
 import numpy as np
 
-from inputs import users
 from inputs import uav
 
 environment_parameters = {
@@ -12,7 +11,7 @@ environment_parameters = {
 a = environment_parameters['k_0']
 b = (2 / math.pi) * math.log(environment_parameters['k_90']/environment_parameters['k_0'])
 
-def get_rician_factors():
+def get_rician_factors(users):
     '''
         Return the Rician Factors of different UAV to user links based on the elevatioin angle of the UAV w.r.t. the user
     '''
