@@ -113,11 +113,11 @@ if __name__== '__main__':
     ees_noma = list()
     ees_oma = list()
 
-    for i in range(4, 61, 4):
+    for i in range(4, 81, 4):
         (avg_power_noma, avg_power_oma, ee_noma, ee_oma) = simulate(i)
         no_of_users.append(i)
-        avg_powers_noma.append(avg_power_noma)
-        avg_powers_oma.append(avg_power_oma)
+        avg_powers_noma.append(10 * math.log10(avg_power_noma))
+        avg_powers_oma.append(10 * math.log10(avg_power_oma))
         ees_noma.append(ee_noma)
         ees_oma.append(ee_oma)
     
