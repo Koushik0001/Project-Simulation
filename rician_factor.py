@@ -11,15 +11,15 @@ environment_parameters = {
 a = environment_parameters['k_0']
 b = (2 / math.pi) * math.log(environment_parameters['k_90']/environment_parameters['k_0'])
 
-def get_rician_factors(users):
+def get_rician_factor(x, y):
     '''
         Return the Rician Factors of different UAV to user links based on the elevatioin angle of the UAV w.r.t. the user
     '''
-    thetas = np.array([math.atan(uav['height']/math.sqrt(users[i]['coordinate'][0] ** 2 + users[i]['coordinate'][1] ** 2)) for i in range(0, len(users))])
-    rician_factors = a * np.exp(b * thetas)
+    thetas = math.atan(uav['height']/math.sqrt(x ** 2 + y ** 2))
+    rician_factor = a * math.exp(b * thetas)
 
-    return rician_factors
+    return rician_factor
 
 
 if __name__=='__main__':
-    print(get_rician_factors())
+    print(get_rician_factor(12, 19))

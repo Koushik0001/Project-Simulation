@@ -22,11 +22,7 @@ def generate_sample(K_n, E_hn_squared=1):
         
         # Accept the candidate if it falls under the PDF curve
         if u <= rician_pdf(candidate, K_n, E_hn_squared):
-            return linear_to_dbm(candidate)
-
-# Convert the sample to dBm
-def linear_to_dbm(value):
-    return 10 * np.log10(value) + 30  # Adding 30 to convert from watts to milliwatts
+            return candidate
 
 
 if __name__=='__main__':

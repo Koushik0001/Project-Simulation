@@ -84,11 +84,13 @@ def noma_power_opt(PRB, b, sigma, H, R):
             j = 0
             while j < n:
                 if association[j][i] != 0:
+                    interfering_power_linear = 10 ** (power[j][i][0] / 10)
+                    H_linear = 10 ** (H[i] / 10)
+                    sigma_linear = 10 ** (sigma /10)
                     power[j][i][1] = round(
                         10 * math.log10((2 ** (avg_rate / b)) - 1)
-                        + power[j][i][0]
-                        + sigma
-                        + 10 * math.log10(b),
+                        + 10 * math.log10(interfering_power_linear * H_linear + sigma_linear * b)
+                        - H[i],
                         2,
                     )
                 j += 1
