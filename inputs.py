@@ -1,6 +1,6 @@
 uav = {
     'coordinate': (0, 0),
-    'height': 100,                      # in meters
+    'height': 300,                      # in meters
     'service_classes': [1, 3, 5, 20]    # data rate in different service classes
 }
 
@@ -11,7 +11,7 @@ environment_parameters={
     'b': 0.136,         # parameter for urban environment
     'eta': 20,          # excessive attenuation factor for Non-LoS links, in dB
     'alpha': 3,         # path loss exponent
-    'noise_dBm': -174   # noise density in dBm/Hz
+    'noise_dBm': -130   # noise density in dBm
 }
 
 system_parameters={
