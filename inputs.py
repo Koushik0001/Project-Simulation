@@ -1,7 +1,9 @@
 uav = {
     'coordinate': (0, 0),
     'height': 300,                      # in meters
-    'service_classes': [1, 3, 5, 20]    # data rate in different service classes
+    'service_classes': [1, 3, 5, 20],   # data rate in different service classes
+    'min_height': 100,
+    'max_height': 300
 }
 
 environment_parameters={

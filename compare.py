@@ -22,7 +22,7 @@ def generate_uniform_points_in_circle(n, r):
     
     return list(zip(x, y))
 
-def simulate(no_users):
+def simulate(no_users, height=None):
     # user division in service classes
     no_service_classes = len(uav['service_classes'])
     users_in_sclass = [(no_users // no_service_classes) for _ in range(no_service_classes)]
@@ -46,9 +46,13 @@ def simulate(no_users):
             user['coordinate'] = uniform_coordinates[i]
             user['th_data_rate'] = uav['service_classes'][s] * 1e6
             
-            d = math.sqrt(user['coordinate'][0] ** 2 + user['coordinate'][1] ** 2 + uav['height'] ** 2)
+            if(height == None):
+                d = math.sqrt(user['coordinate'][0] ** 2 + user['coordinate'][1] ** 2 + uav['height'] ** 2)
+                elevation_angle = (180/math.pi) * math.asin(uav['height']/d)
+            else:
+                d = math.sqrt(user['coordinate'][0] ** 2 + user['coordinate'][1] ** 2 + height ** 2)
+                elevation_angle = (180/math.pi) * math.asin(height/d)
 
-            elevation_angle = (180/math.pi) * math.asin(uav['height']/d)
             pr_los = 1 / (1 + environment_parameters['a'] * math.exp(-environment_parameters['b'] * (elevation_angle - environment_parameters['a'])))
             g_dB = 10 * math.log10(pr_los * (d ** (-environment_parameters['alpha'])) + (1 - pr_los) * environment_parameters['eta'] * (d ** (-environment_parameters['alpha'])))
             
@@ -105,7 +109,10 @@ def simulate(no_users):
 
     return (avg_power_noma, avg_power_oma, ee_noma, ee_oma)
 
+
 if __name__== '__main__':
+    
+    # Comparison of average power and power efficiency of NOMA and OMA 
     no_of_users = list()
     avg_powers_noma = list()
     avg_powers_oma = list()
@@ -119,7 +126,6 @@ if __name__== '__main__':
         avg_powers_oma.append(10 * math.log10(avg_power_oma))
         ees_noma.append(ee_noma)
         ees_oma.append(ee_oma)
-    
 
 
     # Name of the CSV file
@@ -143,3 +149,41 @@ if __name__== '__main__':
             ])
 
     print(f"Data written to {csv_file_name}")
+
+    # For plotting Height vs Power Efficiency
+    heights = list()
+    h_avg_powers_noma = list()
+    h_avg_powers_oma = list()
+    h_ees_noma = list()
+    h_ees_oma = list()
+
+    for h in range(uav['min_height'], uav['max_height']+1, 1):
+        (h_avg_power_noma, h_avg_power_oma, h_ee_noma, h_ee_oma) = simulate(20, h)
+        heights.append(h)
+        h_avg_powers_noma.append(10 * math.log10(avg_power_noma))
+        h_avg_powers_oma.append(10 * math.log10(avg_power_oma))
+        h_ees_noma.append(ee_noma)
+        h_ees_oma.append(ee_oma)
+
+
+    # Name of the CSV file
+    h_csv_file_name = 'power_efficiency_vs_height.csv'
+
+    # Write data to CSV
+    with open(h_csv_file_name, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        
+        # Write the header
+        writer.writerow(['height', 'NOMA_avg_power', 'OMA_avg_power', 'NOMA_power_efficiency', 'OMA_power_efficiency'])
+        
+        # Write the data rows
+        for i in range(len(heights)):
+            writer.writerow([
+                heights[i],
+                h_avg_powers_noma[i],
+                h_avg_powers_oma[i],
+                h_ees_noma[i],
+                h_ees_oma[i]
+            ])
+
+    print(f"Data written to {h_csv_file_name}")
