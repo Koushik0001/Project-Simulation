@@ -136,7 +136,7 @@ if __name__== '__main__':
     pes_noma = list()
     pes_oma = list()
 
-    for i in range(20, 101, 20):
+    for i in range(20, 133, 10):
         (total_power_noma, total_power_oma, pe_noma, pe_oma, _) = simulate(i, 40)
         no_of_users.append(i)
         total_powers_noma.append(total_power_noma)
@@ -255,4 +255,3 @@ if __name__== '__main__':
 
     print(f"Data written to {height_vs_channelGain} successfully!")
         
-

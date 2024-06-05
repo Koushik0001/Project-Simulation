@@ -11,7 +11,7 @@ plt.plot(data['number_of_users'], [46]*len(data['number_of_users']), 'r--', labe
 plt.plot(data['number_of_users'], data['NOMA_total_power'], label='NOMA_avg_power', marker='o')
 plt.plot(data['number_of_users'], data['OMA_total_power'], label='OMA_avg_power', marker='s')
 plt.xlabel('Number of Users')
-plt.ylabel('Average Power (dBm)')
+plt.ylabel('Total Power (dBm)')
 plt.title('Number of Users vs Total Power')
 plt.legend()
 plt.savefig('Fig_Users_vs_TotalPower.png')
