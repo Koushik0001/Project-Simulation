@@ -38,7 +38,8 @@ def noma_power_opt(PRB, b, sigma, H, R):
     l = math.ceil(n / 2)
     count = n
 
-    while r > 0 and count >= 2:
+    while r > 0 and sum(v[0:math.ceil(n/2)]) != 0 and sum(v[math.ceil(n/2): n]) != 0:
+        
         while v[k % math.ceil(n/2)] == 0:
             k += 1
         while v[math.ceil(n / 2) + (l % math.ceil(n/2))] == 0:
@@ -53,9 +54,9 @@ def noma_power_opt(PRB, b, sigma, H, R):
         v[i] -= 1
         v[j] -= 1
     
-        count = len(list(filter(lambda x: x != 0, v)))
         k += 1
         l += 1
+
 
     # Power Allocation
 
@@ -79,8 +80,8 @@ def noma_power_opt(PRB, b, sigma, H, R):
                 j += 1
         i += 1
 
-    # Power Allocation - second user
 
+    # Power Allocation - second user
     i = 0
     while i < n:
         if user_second[i] != 0:

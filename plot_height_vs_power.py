@@ -15,8 +15,7 @@ plt.title('Height  vs Average Power')
 plt.legend()
 plt.gca().set_xticks(range(0, max(data['height']) + 1, 10)) # set vertical gridlines at multiples of 4
 plt.grid(which='both', axis='x')
-plt.grid(True)
-plt.savefig('Height_vs_avg_power.png')
+plt.savefig('Fig_Height_vs_Avg_Power.png')
 plt.show()
 
 # Plot 2: Height vs NOMA_power_efficiency and OMA_power_efficiency
@@ -29,6 +28,5 @@ plt.title('Height vs Power Efficiency')
 plt.legend()
 plt.gca().set_xticks(range(0, max(data['height']) + 1, 10)) # set vertical gridlines at multiples of 4
 plt.grid(which='both', axis='x')
-plt.grid(True)
-plt.savefig('height_vs_power_efficiency.png')
+plt.savefig('Fig_Height_vs_Power_Efficiency.png')
 plt.show()
