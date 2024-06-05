@@ -97,7 +97,7 @@ def simulate(no_users, height=None):
             )
     total_power_noma_dbm = 10 * math.log10(total_power_noma)
     if(total_power_noma_dbm > uav['max_power']):
-        print(f"PowerConstraintError(NOMA): required power {total_power_noma_dbm} dBm > avilable power {uav['max_power']} dBm for {no_users} users")
+        print(f"PowerConstraintError(NOMA): required power {total_power_noma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_users}\n\t height={height} m\n")
     
     # Calculate power efficiency of NOMA
     pe_noma = 10 * math.log10(sum(th_data_rate) * 1e6/total_power_noma)
@@ -118,7 +118,7 @@ def simulate(no_users, height=None):
             total_power_oma += (10 ** (power_user[i] / 10)) * num_prb_per_user
     total_power_oma_dbm = 10 * math.log10(total_power_oma)
     if(total_power_oma_dbm > uav['max_power']):
-        print(f"PowerConstraintError(OMA): required power {total_power_oma_dbm} dBm > avilable power {uav['max_power']} dBm for {no_users} users")
+        print(f"PowerConstraintError(OMA): required power {total_power_oma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_users}\n\t height={height} m\n")
 
     # Calculate power efficiency of OMA
     pe_oma = 10 * math.log10(sum(th_data_rate) * 1e6/total_power_oma)
@@ -136,7 +136,7 @@ if __name__== '__main__':
     pes_noma = list()
     pes_oma = list()
 
-    for i in range(4, 81, 4):
+    for i in range(20, 101, 20):
         (total_power_noma, total_power_oma, pe_noma, pe_oma, _) = simulate(i, 40)
         no_of_users.append(i)
         total_powers_noma.append(total_power_noma)
@@ -169,25 +169,44 @@ if __name__== '__main__':
     print(f"Data written to {numberOfUsers_vs_power} successfully!")
 
     # For plotting Height vs Power Efficiency
-
     heights = list()
-    h_total_powers_noma = list()
-    h_total_powers_oma = list()
-    h_pes_noma = list()
-    h_pes_oma = list()
-    h_data = list()
+
+    # Height vs Power with 40 users
+    h_total_powers_noma_40 = list()
+    h_total_powers_oma_40 = list()
+    h_pes_noma_40 = list()
+    h_pes_oma_40 = list()
+    h_data_40 = list()
 
     for h in range(uav['min_height'], uav['max_height']+1, 10):
-        (h_total_power_noma, h_total_power_oma, h_pe_noma, h_pe_oma, h_db) = simulate(20, h)
+        (h_total_power_noma_40, h_total_power_oma_40, h_pe_noma_40, h_pe_oma_40, h_db_40) = simulate(40, h)
         heights.append(h)
-        h_total_powers_noma.append(h_total_power_noma)
-        h_total_powers_oma.append(h_total_power_oma)
-        h_pes_noma.append(h_pe_noma)
-        h_pes_oma.append(h_pe_oma)
+        h_total_powers_noma_40.append(h_total_power_noma_40)
+        h_total_powers_oma_40.append(h_total_power_oma_40)
+        h_pes_noma_40.append(h_pe_noma_40)
+        h_pes_oma_40.append(h_pe_oma_40)
 
         # For plotting Average value of Height vs Channel Gain
-        h_db.insert(0, h)
-        h_data.append(h_db)
+        h_db_40.insert(0, h)
+        h_data_40.append(h_db_40)
+
+    # Height vs Power with 60 users
+    h_total_powers_noma_60 = list()
+    h_total_powers_oma_60 = list()
+    h_pes_noma_60 = list()
+    h_pes_oma_60 = list()
+    h_data_60 = list()
+
+    for h in range(uav['min_height'], uav['max_height']+1, 10):
+        (h_total_power_noma_60, h_total_power_oma_60, h_pe_noma_60, h_pe_oma_60, h_db_60) = simulate(60, h)
+        h_total_powers_noma_60.append(h_total_power_noma_60)
+        h_total_powers_oma_60.append(h_total_power_oma_60)
+        h_pes_noma_60.append(h_pe_noma_60)
+        h_pes_oma_60.append(h_pe_oma_60)
+
+        # For plotting Average value of Height vs Channel Gain
+        h_db_60.insert(0, h)
+        h_data_60.append(h_db_60)
     
 
 
@@ -197,18 +216,30 @@ if __name__== '__main__':
    # Write data to CSV
     with open(height_vs_powerEfficiency, mode='w', newline='') as file:
         writer = csv.writer(file)
-      
+
         # Write the header
-        writer.writerow(['height', 'NOMA_total_power', 'OMA_total_power', 'NOMA_power_efficiency', 'OMA_power_efficiency'])
+        writer.writerow(['height', 
+                         'NOMA_total_power_40', 
+                         'NOMA_total_power_60', 
+                         'OMA_total_power_40', 
+                         'OMA_total_power_60', 
+                         'NOMA_power_efficiency_40', 
+                         'NOMA_power_efficiency_60', 
+                         'OMA_power_efficiency_40',
+                         'OMA_power_efficiency_60'])
         
         # Write the data rows
         for i in range(len(heights)):
             writer.writerow([
                 heights[i],
-                h_total_powers_noma[i],
-                h_total_powers_oma[i],
-                h_pes_noma[i],
-                h_pes_oma[i]
+                h_total_powers_noma_40[i],
+                h_total_powers_noma_60[i],
+                h_total_powers_oma_40[i],
+                h_total_powers_oma_60[i],
+                h_pes_noma_40[i],
+                h_pes_noma_60[i],
+                h_pes_oma_40[i],
+                h_pes_oma_60[i]
             ])
 
     print(f"Data written to {height_vs_powerEfficiency} successfully!")
@@ -220,7 +251,7 @@ if __name__== '__main__':
     # Write the data to a CSV file
     with open(height_vs_channelGain, 'w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerows(h_data)
+        writer.writerows(h_data_40)
 
     print(f"Data written to {height_vs_channelGain} successfully!")
         
