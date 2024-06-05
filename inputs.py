@@ -19,7 +19,7 @@ environment_parameters={
 }
 
 system_parameters={
-    'B': 180000,            # PRB bandwidth in Hz
-    'total_BW': 15000000,    # total bandwidth in Hz
-    'cell_redius': 40        # in meters  
+    'B': 720000,            # PRB bandwidth in Hz
+    'no_prb': 135,          # Number of PRBs
+    'cell_redius': 40       # in meters  
 }

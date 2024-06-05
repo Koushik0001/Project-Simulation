@@ -6,7 +6,7 @@ import csv
 heights = []
 data = []
 
-with open('data.csv', 'r') as file:
+with open('data_height_vs_channelGain.csv', 'r') as file:
     reader = csv.reader(file)
     for row in reader:
         heights.append(int(row[0]))  # Assuming first value in row is height

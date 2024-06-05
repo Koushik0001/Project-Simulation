@@ -5,7 +5,7 @@ import csv
 heights = []
 values = []
 
-with open('data.csv', 'r') as file:
+with open('data_height_vs_channelGain.csv', 'r') as file:
     reader = csv.reader(file)
     for row in reader:
         heights.append(int(row[0]))  # Assuming first value in row is height
@@ -16,7 +16,7 @@ with open('data.csv', 'r') as file:
 # Plot the bar graph
 plt.plot(heights, values)
 plt.xlabel('Height')
-plt.ylabel('Average Value of Channel Gain')
+plt.ylabel('Average Value of Channel Gain (dBm)')
 plt.title('Height vs Average Channel Gain')
 plt.savefig("Fig_Height_vs_Average_Channel_Gain.png")
 plt.show()
