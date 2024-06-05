@@ -32,31 +32,34 @@ def noma_power_opt(PRB, b, sigma, H, R):
         v[i] = math.ceil(x[i] * 2 * PRB / sum_x)
     
 
+    # User Clustering
     r = PRB
     k = 0
     l = math.ceil(n / 2)
     count = n
 
     while r > 0 and count >= 2:
-        while v[k % n] == 0:
+        while v[k % math.ceil(n/2)] == 0:
             k += 1
-        while v[l % n] == 0:
+        while v[math.ceil(n / 2) + (l % math.ceil(n/2))] == 0:
             l += 1
-        i = min(k % n, l % n)
-        j = max(l % n, k % n)
-        if i != j:
-            association[i][j] += 1
-            user_first[i] += 1
-            user_second[j] += 1
-            r -= 1
-            v[i] -= 1
-            v[j] -= 1
-        else:
-            l = k + math.ceil(n / 2)
+        i = k % math.ceil(n/2)
+        j = math.ceil(n / 2) + (l % math.ceil(n/2))
+        
+        association[i][j] += 1
+        user_first[i] += 1
+        user_second[j] += 1
+        r -= 1
+        v[i] -= 1
+        v[j] -= 1
+    
         count = len(list(filter(lambda x: x != 0, v)))
         k += 1
         l += 1
 
+    # Power Allocation
+
+    # Power Allocation - first user
     i = 0
     while i < n:
         if user_first[i] != 0:
@@ -75,6 +78,8 @@ def noma_power_opt(PRB, b, sigma, H, R):
                     power[i][j][0] = power_first
                 j += 1
         i += 1
+
+    # Power Allocation - second user
 
     i = 0
     while i < n:
@@ -97,3 +102,8 @@ def noma_power_opt(PRB, b, sigma, H, R):
         i += 1
 
     return association, power
+
+if __name__=='__main__':
+    association, power = noma_power_opt(11, 136, -145, [0.3, 0.9, 0.12, 0.5, 0.4, 0.8], [10, 20, 40, 10, 12, 1])
+    print(f"{association=}")
+    print(f"{power=}")
