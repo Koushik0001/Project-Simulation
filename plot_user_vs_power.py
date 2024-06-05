@@ -17,18 +17,17 @@ plt.gca().set_xticks(range(0, max(data['number_of_users']) + 1, 4)) # set vertic
 plt.grid(which='both', axis='x')
 plt.grid(True)
 plt.savefig('Fig_Users_vs_TotalPower.png')
-plt.show()
 
 # Plot 2: Number of Users vs NOMA_power_efficiency and OMA_power_efficiency
 plt.figure(figsize=(10, 6))
 plt.plot(data['number_of_users'], data['NOMA_power_efficiency'], label='NOMA_power_efficiency', marker='o')
 plt.plot(data['number_of_users'], data['OMA_power_efficiency'], label='OMA_power_efficiency', marker='s')
 plt.xlabel('Number of Users')
-plt.ylabel('Power Efficiency (in log scale)')
+plt.ylabel('Power Efficiency (dBm)')
 plt.title('Number of Users vs Power Efficiency')
 plt.legend()
 plt.gca().set_xticks(range(0, max(data['number_of_users']) + 1, 4)) # set vertical gridlines at multiples of 4
 plt.grid(which='both', axis='x')
 plt.grid(True)
 plt.savefig('Fig_Users_vs_PowerEfficiency.png')
-plt.show()
+

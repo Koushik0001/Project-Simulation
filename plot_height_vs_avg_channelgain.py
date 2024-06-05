@@ -15,8 +15,7 @@ with open('data_height_vs_channelGain.csv', 'r') as file:
 
 # Plot the bar graph
 plt.plot(heights, values)
-plt.xlabel('Height')
+plt.xlabel('UAV Height (m)')
 plt.ylabel('Average Value of Channel Gain (dBm)')
 plt.title('Height vs Average Channel Gain')
 plt.savefig("Fig_Height_vs_Average_Channel_Gain.png")
-plt.show()

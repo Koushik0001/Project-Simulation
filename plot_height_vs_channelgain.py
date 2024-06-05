@@ -29,10 +29,9 @@ for i in range(num_users):
     plt.bar(indices + i * bar_width, data[i], bar_width, label=f'User {i+1}')
 
 # Set the labels and title
-plt.xlabel('Height')
+plt.xlabel('UAV Height (m)')
 plt.ylabel('Value of h')
 plt.title('Values of h for Each Height and User')
 plt.xticks(indices + bar_width * (num_users - 1) / 2, heights)
 plt.legend()
 plt.savefig("Fig_Height_vs_Channel_Gain.png")
-plt.show()
