@@ -7,7 +7,6 @@ source /Users/koushikmahanta/Desktop/ProjectSimulation/bin/activate
 python compare.py
 python plot_user_vs_power.py
 python plot_height_vs_power.py
-python plot_height_vs_avg_channelgain.py
 
 # Deactivate the virtual environment
 deactivate
