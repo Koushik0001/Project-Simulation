@@ -60,12 +60,15 @@ def generate_user_data(no_users, height, user_locations):
             elevation_angle = (180/math.pi) * math.asin(height/d)
 
             # Calculating LOS probability
-            pr_los = 1 / (1 + environment_parameters['a'] * math.exp(-environment_parameters['b'] * (elevation_angle - environment_parameters['a'])))
+            pr_los = environment_parameters['k'] * ((elevation_angle - 15) ** environment_parameters['omega'])
 
             # Calculating large-scale average pathloss
-            eta_linear = 10 ** (environment_parameters['eta'] / 10)
-            g = pr_los * (d ** (-environment_parameters['alpha'])) + (1 - pr_los) * eta_linear * (d ** (-environment_parameters['alpha']))
-            g_dB = 10 * math.log10(g)
+            s_linear = 10 ** (environment_parameters['s'] / 10)
+            mu_los_linear = 10 ** (environment_parameters['mu_los'] / 10)
+            mu_nlos_linear = 10 ** (environment_parameters['mu_nlos'] / 10)
+
+            x = (s_linear * ((pr_los/ mu_los_linear) + ((1-pr_los)/mu_nlos_linear))) / (d ** 2)
+            x_dB = 10 * math.log10(x)
 
 
             # Calculating Rician Factor
@@ -76,7 +79,7 @@ def generate_user_data(no_users, height, user_locations):
             h_mag_sq_db = 10 * math.log10(h_mag_sq)
 
             # Calculating channel gain
-            user['H_db'] = g_dB + h_mag_sq_db
+            user['H_db'] = x_dB + h_mag_sq_db
             
             # Adding the user to the list of users
             users.append(user)
@@ -90,50 +93,51 @@ def generate_user_data(no_users, height, user_locations):
 
 
 def simulate(H_db, th_data_rate, height):
-    
-    no_users = len(H_db)
 
-    # Get total power using NOMA
-    association_matrix, power_matrix = simu_NOMA.noma_power_opt(
-        system_parameters['no_prb'], 
-        system_parameters['B'], 
-        environment_parameters['noise_dBm'], 
-        H_db, 
-        th_data_rate
-    )
-    total_power_noma = 0
-    for i in range(0, no_users):
-        for j in range(0, no_users):
-            total_power_noma += association_matrix[i][j] * (
-                (10 ** (power_matrix[i][j][0] / 10)) + (10 ** (power_matrix[i][j][1] / 10))
-            )
-    total_power_noma_dbm = 10 * math.log10(total_power_noma)
-    if(total_power_noma_dbm > uav['max_power']):
-        print(f"PowerConstraintError(NOMA): required power {total_power_noma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_users}\n\t height={height} m\n")
-    
-    # Calculate power efficiency of NOMA
-    pe_noma = 10 * math.log10(sum(th_data_rate) * 1e6/total_power_noma)
+    with open('output.txt', 'a') as out_file:
+        no_users = len(H_db)
 
-
-
-    # Get total power using OMA
-    num_prb_per_user, power_user = simu_OMA.oma_power_opt(
-        system_parameters['no_prb'], 
-        system_parameters['B'], 
-        environment_parameters['noise_dBm'], 
-        H_db, 
-        th_data_rate
-    )
-    total_power_oma = 0
-    if num_prb_per_user != 0:
+        # Get total power using NOMA
+        association_matrix, power_matrix = simu_NOMA.noma_power_opt(
+            system_parameters['no_prb'], 
+            system_parameters['B'], 
+            environment_parameters['noise_dBm'], 
+            H_db, 
+            th_data_rate
+        )
+        total_power_noma = 0
         for i in range(0, no_users):
-            total_power_oma += (10 ** (power_user[i] / 10)) * num_prb_per_user
-    total_power_oma_dbm = 10 * math.log10(total_power_oma)
-    if(total_power_oma_dbm > uav['max_power']):
-        print(f"PowerConstraintError(OMA): required power {total_power_oma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_users}\n\t height={height} m\n")
+            for j in range(0, no_users):
+                total_power_noma += association_matrix[i][j] * (
+                    (10 ** (power_matrix[i][j][0] / 10)) + (10 ** (power_matrix[i][j][1] / 10))
+                )
+        total_power_noma_dbm = 10 * math.log10(total_power_noma)
+        if(total_power_noma_dbm > uav['max_power']):
+            print(f"PowerConstraintError(NOMA): required power {total_power_noma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_users}\n\t height={height} m\n", file=out_file)
+        
+        # Calculate power efficiency of NOMA
+        pe_noma = 10 * math.log10(sum(th_data_rate) * 1e6/total_power_noma)
 
-    # Calculate power efficiency of OMA
-    pe_oma = 10 * math.log10(sum(th_data_rate) * 1e6/total_power_oma)
+
+
+        # Get total power using OMA
+        num_prb_per_user, power_user = simu_OMA.oma_power_opt(
+            system_parameters['no_prb'], 
+            system_parameters['B'], 
+            environment_parameters['noise_dBm'], 
+            H_db, 
+            th_data_rate
+        )
+        total_power_oma = 0
+        if num_prb_per_user != 0:
+            for i in range(0, no_users):
+                total_power_oma += (10 ** (power_user[i] / 10)) * num_prb_per_user
+        total_power_oma_dbm = 10 * math.log10(total_power_oma)
+        if(total_power_oma_dbm > uav['max_power']):
+            print(f"PowerConstraintError(OMA): required power {total_power_oma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_users}\n\t height={height} m\n", file=out_file)
+
+        # Calculate power efficiency of OMA
+        pe_oma = 10 * math.log10(sum(th_data_rate) * 1e6/total_power_oma)
 
 
     return (total_power_noma_dbm, total_power_oma_dbm, pe_noma, pe_oma)
@@ -141,11 +145,12 @@ def simulate(H_db, th_data_rate, height):
 
 
 if __name__== '__main__':
-    
+    with open('output.txt', 'w') as file:
+        pass  # Just open and close the file to clear it
 
     power_data_for_optimal_height = tuple()
     best_average_total_power_noma_for_heights = 46
-    optimal_height = 10
+    optimal_height = 0
     for h in range(uav['min_height'], uav['max_height']+1, 10):
         # Comparison of average power and power efficiency of NOMA and OMA 
         no_of_users = list()
@@ -156,7 +161,7 @@ if __name__== '__main__':
 
         for i in range(20, 133, 10):
             # generating user locations
-            user_locations = generate_uniform_points_in_circle(i, system_parameters['cell_redius'])
+            user_locations = generate_uniform_points_in_circle(i, h/math.tan((math.pi/180) * 15))
             H_db, th_data_Rate = generate_user_data(i, h, user_locations)
             (total_power_noma, total_power_oma, pe_noma, pe_oma) = simulate(H_db, th_data_Rate, h)
             no_of_users.append(i)
@@ -205,10 +210,10 @@ if __name__== '__main__':
     h_pes_noma_40 = list()
     h_pes_oma_40 = list()
 
-    # generating user locations
-    h_user_locations_40 = generate_uniform_points_in_circle(40, system_parameters['cell_redius'])
 
     for h in range(uav['min_height'], uav['max_height']+1, 10):
+        # generating user locations
+        h_user_locations_40 = generate_uniform_points_in_circle(40, h/math.tan((math.pi/180) * 15))
         H_db_40, th_data_Rate_40 = generate_user_data(40, h, h_user_locations_40)
         (h_total_power_noma_40, h_total_power_oma_40, h_pe_noma_40, h_pe_oma_40) = simulate(H_db_40, th_data_Rate_40, h)
         heights.append(h)
@@ -224,10 +229,10 @@ if __name__== '__main__':
     h_pes_oma_60 = list()
 
 
-    # generating user locations
-    h_user_locations_60 = generate_uniform_points_in_circle(60, system_parameters['cell_redius'])
 
     for h in range(uav['min_height'], uav['max_height']+1, 10):
+        # generating user locations
+        h_user_locations_60 = generate_uniform_points_in_circle(60, h/math.tan((math.pi/180) * 15))
         H_db_60, th_data_Rate_60 = generate_user_data(60, h, h_user_locations_60)
         (h_total_power_noma_60, h_total_power_oma_60, h_pe_noma_60, h_pe_oma_60) = simulate(H_db_60, th_data_Rate_60, h)
         h_total_powers_noma_60.append(h_total_power_noma_60)

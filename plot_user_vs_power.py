@@ -25,4 +25,3 @@ plt.ylabel('Power Efficiency (in log scale)')
 plt.title('Number of Users vs Power Efficiency')
 plt.legend()
 plt.savefig('Fig_Users_vs_PowerEfficiency.png')
-

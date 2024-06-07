@@ -1,0 +1,820 @@
+PowerConstraintError(OMA): required power 93.95301592549163 dBm > avilable power 46 dBm 
+for
+	 users=70
+	 height=10 m
+
+PowerConstraintError(OMA): required power 92.74678063170015 dBm > avilable power 46 dBm 
+for
+	 users=80
+	 height=10 m
+
+PowerConstraintError(OMA): required power 92.65134670368839 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=10 m
+
+PowerConstraintError(OMA): required power 89.97797030128655 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=10 m
+
+PowerConstraintError(OMA): required power 98.0677978951104 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=10 m
+
+PowerConstraintError(OMA): required power 93.9872118255212 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=10 m
+
+PowerConstraintError(OMA): required power 92.5242253401704 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=10 m
+
+PowerConstraintError(OMA): required power 47.81375827099238 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=20 m
+
+PowerConstraintError(OMA): required power 95.94268897059618 dBm > avilable power 46 dBm 
+for
+	 users=70
+	 height=20 m
+
+PowerConstraintError(OMA): required power 96.28840429219842 dBm > avilable power 46 dBm 
+for
+	 users=80
+	 height=20 m
+
+PowerConstraintError(OMA): required power 94.2794150552705 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=20 m
+
+PowerConstraintError(OMA): required power 104.31373513485086 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=20 m
+
+PowerConstraintError(OMA): required power 97.3191081552224 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=20 m
+
+PowerConstraintError(OMA): required power 102.43016071396275 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=20 m
+
+PowerConstraintError(NOMA): required power 50.58795294518454 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=20 m
+
+PowerConstraintError(OMA): required power 103.67981736367096 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=20 m
+
+PowerConstraintError(OMA): required power 53.26171522229644 dBm > avilable power 46 dBm 
+for
+	 users=50
+	 height=30 m
+
+PowerConstraintError(OMA): required power 49.13517149857129 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=30 m
+
+PowerConstraintError(OMA): required power 97.64267220523993 dBm > avilable power 46 dBm 
+for
+	 users=70
+	 height=30 m
+
+PowerConstraintError(OMA): required power 105.94628068362499 dBm > avilable power 46 dBm 
+for
+	 users=80
+	 height=30 m
+
+PowerConstraintError(OMA): required power 96.37516116801226 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=30 m
+
+PowerConstraintError(OMA): required power 104.48817272702671 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=30 m
+
+PowerConstraintError(OMA): required power 98.72689227375221 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=30 m
+
+PowerConstraintError(OMA): required power 102.80933226054199 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=30 m
+
+PowerConstraintError(NOMA): required power 49.55803838391198 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=30 m
+
+PowerConstraintError(OMA): required power 100.24750087464035 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=30 m
+
+PowerConstraintError(OMA): required power 46.495483686972065 dBm > avilable power 46 dBm 
+for
+	 users=50
+	 height=40 m
+
+PowerConstraintError(OMA): required power 55.96909267580139 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=40 m
+
+PowerConstraintError(OMA): required power 98.98937175669168 dBm > avilable power 46 dBm 
+for
+	 users=70
+	 height=40 m
+
+PowerConstraintError(OMA): required power 100.0867024345017 dBm > avilable power 46 dBm 
+for
+	 users=80
+	 height=40 m
+
+PowerConstraintError(OMA): required power 105.97084555246389 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=40 m
+
+PowerConstraintError(OMA): required power 105.67562612486326 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=40 m
+
+PowerConstraintError(OMA): required power 101.71493896736766 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=40 m
+
+PowerConstraintError(NOMA): required power 49.10059594903072 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=40 m
+
+PowerConstraintError(OMA): required power 108.85129562471094 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=40 m
+
+PowerConstraintError(NOMA): required power 54.22739486574919 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=40 m
+
+PowerConstraintError(OMA): required power 106.33689833735032 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=40 m
+
+PowerConstraintError(OMA): required power 47.39508852748504 dBm > avilable power 46 dBm 
+for
+	 users=50
+	 height=50 m
+
+PowerConstraintError(OMA): required power 50.50226275318092 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=50 m
+
+PowerConstraintError(OMA): required power 103.09111233531262 dBm > avilable power 46 dBm 
+for
+	 users=70
+	 height=50 m
+
+PowerConstraintError(OMA): required power 102.98981139888257 dBm > avilable power 46 dBm 
+for
+	 users=80
+	 height=50 m
+
+PowerConstraintError(OMA): required power 109.89215356963895 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=50 m
+
+PowerConstraintError(OMA): required power 105.72316968278454 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=50 m
+
+PowerConstraintError(OMA): required power 104.23342161779973 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=50 m
+
+PowerConstraintError(NOMA): required power 46.35582517873026 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=50 m
+
+PowerConstraintError(OMA): required power 103.13492144407147 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=50 m
+
+PowerConstraintError(NOMA): required power 55.59074672394408 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=50 m
+
+PowerConstraintError(OMA): required power 108.56916888118332 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=50 m
+
+PowerConstraintError(OMA): required power 62.63560517557558 dBm > avilable power 46 dBm 
+for
+	 users=50
+	 height=60 m
+
+PowerConstraintError(OMA): required power 53.7081943469579 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=60 m
+
+PowerConstraintError(OMA): required power 101.29614645545718 dBm > avilable power 46 dBm 
+for
+	 users=70
+	 height=60 m
+
+PowerConstraintError(OMA): required power 106.3180291766902 dBm > avilable power 46 dBm 
+for
+	 users=80
+	 height=60 m
+
+PowerConstraintError(NOMA): required power 46.826580841236485 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=60 m
+
+PowerConstraintError(OMA): required power 115.70888262871216 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=60 m
+
+PowerConstraintError(OMA): required power 111.65784964465422 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=60 m
+
+PowerConstraintError(NOMA): required power 47.25911294383926 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=60 m
+
+PowerConstraintError(OMA): required power 109.02801656369776 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=60 m
+
+PowerConstraintError(NOMA): required power 50.74913898158093 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=60 m
+
+PowerConstraintError(OMA): required power 108.83010048495413 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=60 m
+
+PowerConstraintError(NOMA): required power 55.732112315099265 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=60 m
+
+PowerConstraintError(OMA): required power 107.76531393205461 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=60 m
+
+PowerConstraintError(OMA): required power 50.11210682340285 dBm > avilable power 46 dBm 
+for
+	 users=50
+	 height=70 m
+
+PowerConstraintError(OMA): required power 56.98696522003133 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=70 m
+
+PowerConstraintError(OMA): required power 108.86708042577422 dBm > avilable power 46 dBm 
+for
+	 users=70
+	 height=70 m
+
+PowerConstraintError(OMA): required power 106.11021851893176 dBm > avilable power 46 dBm 
+for
+	 users=80
+	 height=70 m
+
+PowerConstraintError(NOMA): required power 49.673122019568396 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=70 m
+
+PowerConstraintError(OMA): required power 117.13276212915565 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=70 m
+
+PowerConstraintError(NOMA): required power 47.723660937747056 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=70 m
+
+PowerConstraintError(OMA): required power 114.56965594465467 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=70 m
+
+PowerConstraintError(OMA): required power 106.50312320288643 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=70 m
+
+PowerConstraintError(NOMA): required power 49.055610522490774 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=70 m
+
+PowerConstraintError(OMA): required power 107.4482028916345 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=70 m
+
+PowerConstraintError(NOMA): required power 58.33413032351022 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=70 m
+
+PowerConstraintError(OMA): required power 112.01241734181355 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=70 m
+
+PowerConstraintError(OMA): required power 55.58383262000582 dBm > avilable power 46 dBm 
+for
+	 users=50
+	 height=80 m
+
+PowerConstraintError(OMA): required power 60.32562889943929 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=80 m
+
+PowerConstraintError(OMA): required power 107.20310636439248 dBm > avilable power 46 dBm 
+for
+	 users=70
+	 height=80 m
+
+PowerConstraintError(OMA): required power 109.89163268629534 dBm > avilable power 46 dBm 
+for
+	 users=80
+	 height=80 m
+
+PowerConstraintError(OMA): required power 105.66072507600076 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=80 m
+
+PowerConstraintError(OMA): required power 109.49633106968038 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=80 m
+
+PowerConstraintError(NOMA): required power 48.58762686129406 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=80 m
+
+PowerConstraintError(OMA): required power 110.98701925390868 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=80 m
+
+PowerConstraintError(NOMA): required power 55.40685165736577 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=80 m
+
+PowerConstraintError(OMA): required power 112.79756271941912 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=80 m
+
+PowerConstraintError(NOMA): required power 59.437313027927075 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=80 m
+
+PowerConstraintError(OMA): required power 111.99741941346595 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=80 m
+
+PowerConstraintError(OMA): required power 46.96796333733592 dBm > avilable power 46 dBm 
+for
+	 users=40
+	 height=90 m
+
+PowerConstraintError(OMA): required power 56.353832215326975 dBm > avilable power 46 dBm 
+for
+	 users=50
+	 height=90 m
+
+PowerConstraintError(OMA): required power 71.89053507790481 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=90 m
+
+PowerConstraintError(OMA): required power 109.07872181547492 dBm > avilable power 46 dBm 
+for
+	 users=70
+	 height=90 m
+
+PowerConstraintError(OMA): required power 106.6815195461789 dBm > avilable power 46 dBm 
+for
+	 users=80
+	 height=90 m
+
+PowerConstraintError(NOMA): required power 46.46381081631924 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=90 m
+
+PowerConstraintError(OMA): required power 114.9995837231427 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=90 m
+
+PowerConstraintError(OMA): required power 112.23702042262101 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=90 m
+
+PowerConstraintError(NOMA): required power 46.7013968781547 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=90 m
+
+PowerConstraintError(OMA): required power 109.31244571365689 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=90 m
+
+PowerConstraintError(NOMA): required power 53.2212428689699 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=90 m
+
+PowerConstraintError(OMA): required power 110.4472072767689 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=90 m
+
+PowerConstraintError(NOMA): required power 63.26089752377583 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=90 m
+
+PowerConstraintError(OMA): required power 116.27498590041935 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=90 m
+
+PowerConstraintError(OMA): required power 57.317944540102836 dBm > avilable power 46 dBm 
+for
+	 users=50
+	 height=100 m
+
+PowerConstraintError(OMA): required power 65.06862217301821 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=100 m
+
+PowerConstraintError(OMA): required power 111.47306957510185 dBm > avilable power 46 dBm 
+for
+	 users=70
+	 height=100 m
+
+PowerConstraintError(OMA): required power 108.43442995194422 dBm > avilable power 46 dBm 
+for
+	 users=80
+	 height=100 m
+
+PowerConstraintError(OMA): required power 110.31803511580229 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=100 m
+
+PowerConstraintError(NOMA): required power 46.78686202954769 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=100 m
+
+PowerConstraintError(OMA): required power 114.2292548193082 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=100 m
+
+PowerConstraintError(NOMA): required power 57.56514292063378 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=100 m
+
+PowerConstraintError(OMA): required power 122.14775157701868 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=100 m
+
+PowerConstraintError(NOMA): required power 56.14029498998168 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=100 m
+
+PowerConstraintError(OMA): required power 112.76551390457169 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=100 m
+
+PowerConstraintError(NOMA): required power 57.78456880875495 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=100 m
+
+PowerConstraintError(OMA): required power 109.99872328924477 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=100 m
+
+PowerConstraintError(OMA): required power 53.900743286994384 dBm > avilable power 46 dBm 
+for
+	 users=50
+	 height=110 m
+
+PowerConstraintError(OMA): required power 54.31218496083723 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=110 m
+
+PowerConstraintError(OMA): required power 112.9096219471983 dBm > avilable power 46 dBm 
+for
+	 users=70
+	 height=110 m
+
+PowerConstraintError(OMA): required power 115.0148206175569 dBm > avilable power 46 dBm 
+for
+	 users=80
+	 height=110 m
+
+PowerConstraintError(OMA): required power 107.65240639129189 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=110 m
+
+PowerConstraintError(OMA): required power 110.56475122594995 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=110 m
+
+PowerConstraintError(NOMA): required power 50.210454833588244 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=110 m
+
+PowerConstraintError(OMA): required power 113.90606738245796 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=110 m
+
+PowerConstraintError(NOMA): required power 57.46032258152603 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=110 m
+
+PowerConstraintError(OMA): required power 113.787515285371 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=110 m
+
+PowerConstraintError(NOMA): required power 58.00932659918524 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=110 m
+
+PowerConstraintError(OMA): required power 109.58078182360032 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=110 m
+
+PowerConstraintError(OMA): required power 58.77448917466677 dBm > avilable power 46 dBm 
+for
+	 users=50
+	 height=120 m
+
+PowerConstraintError(OMA): required power 59.61889622346824 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=120 m
+
+PowerConstraintError(OMA): required power 118.91148139897174 dBm > avilable power 46 dBm 
+for
+	 users=70
+	 height=120 m
+
+PowerConstraintError(OMA): required power 116.3387042053823 dBm > avilable power 46 dBm 
+for
+	 users=80
+	 height=120 m
+
+PowerConstraintError(OMA): required power 112.46505405625287 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=120 m
+
+PowerConstraintError(NOMA): required power 54.94173345905554 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=120 m
+
+PowerConstraintError(OMA): required power 122.07887389633329 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=120 m
+
+PowerConstraintError(NOMA): required power 52.42329747721968 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=120 m
+
+PowerConstraintError(OMA): required power 113.24899084287837 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=120 m
+
+PowerConstraintError(NOMA): required power 61.07669163291317 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=120 m
+
+PowerConstraintError(OMA): required power 118.08347755273189 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=120 m
+
+PowerConstraintError(NOMA): required power 63.91942510102642 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=120 m
+
+PowerConstraintError(OMA): required power 117.91475426333152 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=120 m
+
+PowerConstraintError(OMA): required power 47.693524438951975 dBm > avilable power 46 dBm 
+for
+	 users=40
+	 height=130 m
+
+PowerConstraintError(OMA): required power 58.26592285561257 dBm > avilable power 46 dBm 
+for
+	 users=50
+	 height=130 m
+
+PowerConstraintError(NOMA): required power 53.37854768759085 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=130 m
+
+PowerConstraintError(OMA): required power 79.01522744231724 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=130 m
+
+PowerConstraintError(OMA): required power 114.76151591680431 dBm > avilable power 46 dBm 
+for
+	 users=70
+	 height=130 m
+
+PowerConstraintError(OMA): required power 112.1888846618684 dBm > avilable power 46 dBm 
+for
+	 users=80
+	 height=130 m
+
+PowerConstraintError(NOMA): required power 46.72529368758616 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=130 m
+
+PowerConstraintError(OMA): required power 114.8592221439138 dBm > avilable power 46 dBm 
+for
+	 users=90
+	 height=130 m
+
+PowerConstraintError(OMA): required power 111.03491626820825 dBm > avilable power 46 dBm 
+for
+	 users=100
+	 height=130 m
+
+PowerConstraintError(NOMA): required power 51.345106257118914 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=130 m
+
+PowerConstraintError(OMA): required power 113.79732770272756 dBm > avilable power 46 dBm 
+for
+	 users=110
+	 height=130 m
+
+PowerConstraintError(NOMA): required power 57.721193001347864 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=130 m
+
+PowerConstraintError(OMA): required power 115.6288989266341 dBm > avilable power 46 dBm 
+for
+	 users=120
+	 height=130 m
+
+PowerConstraintError(NOMA): required power 61.33351475990315 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=130 m
+
+PowerConstraintError(OMA): required power 114.46536920057098 dBm > avilable power 46 dBm 
+for
+	 users=130
+	 height=130 m
+
+PowerConstraintError(OMA): required power 49.158035621030685 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=30 m
+
+PowerConstraintError(OMA): required power 52.28532825259453 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=40 m
+
+PowerConstraintError(OMA): required power 50.241229186312054 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=50 m
+
+PowerConstraintError(OMA): required power 70.7791663474072 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=60 m
+
+PowerConstraintError(OMA): required power 58.211426369800705 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=70 m
+
+PowerConstraintError(OMA): required power 57.00963581581058 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=80 m
+
+PowerConstraintError(OMA): required power 61.18124927234989 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=90 m
+
+PowerConstraintError(OMA): required power 61.19376450623917 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=100 m
+
+PowerConstraintError(OMA): required power 56.96664891212492 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=110 m
+
+PowerConstraintError(OMA): required power 56.33709736013199 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=120 m
+
+PowerConstraintError(OMA): required power 58.79715847633424 dBm > avilable power 46 dBm 
+for
+	 users=60
+	 height=130 m
+
