@@ -28,17 +28,17 @@ def generate_uniform_points_in_circle(n, r):
 
 
 
-def generate_user_data(no_users, height, user_locations):
+def generate_user_data(no_ues, height, ue_locations):
     '''
         Generate two lists consisting of users' channel gains and threshold datarates repectively
     '''
     # user division in service classes
     no_service_classes = len(uav['service_classes'])
-    users_in_sclass = [(no_users // no_service_classes) for _ in range(no_service_classes)]
-    extra_users = no_users % no_service_classes
+    users_in_sclass = [(no_ues // no_service_classes) for _ in range(no_service_classes)]
+    extra_users = no_ues % no_service_classes
 
     i = 0
-    while i<no_users and extra_users > 0:
+    while i<no_ues and extra_users > 0:
         users_in_sclass[i] += 1
         extra_users -= 1
         i += 1
@@ -50,7 +50,7 @@ def generate_user_data(no_users, height, user_locations):
         for si in range(users_in_sclass[s]):
             user = dict()
             
-            user['coordinate'] = user_locations[i]
+            user['coordinate'] = ue_locations[i]
             user['th_data_rate'] = uav['service_classes'][s] * 1e6
             
             # Calculating euclidean distance between UAV and user           
@@ -82,8 +82,8 @@ def generate_user_data(no_users, height, user_locations):
             users.append(user)
             i += 1
 
-    H_db = [users[i]['H_db'] for i in range(no_users)]
-    th_data_rate = [users[i]['th_data_rate'] for i in range(no_users)]
+    H_db = [users[i]['H_db'] for i in range(no_ues)]
+    th_data_rate = [users[i]['th_data_rate'] for i in range(no_ues)]
 
     return H_db, th_data_rate
     
@@ -91,7 +91,7 @@ def generate_user_data(no_users, height, user_locations):
 
 def simulate(H_db, th_data_rate, height):
     
-    no_users = len(H_db)
+    no_ues = len(H_db)
 
     # Get total power using NOMA
     association_matrix, power_matrix = simu_NOMA.noma_power_opt(
@@ -102,17 +102,17 @@ def simulate(H_db, th_data_rate, height):
         th_data_rate
     )
     total_power_noma = 0
-    for i in range(0, no_users):
-        for j in range(0, no_users):
+    for i in range(0, no_ues):
+        for j in range(0, no_ues):
             total_power_noma += association_matrix[i][j] * (
                 (10 ** (power_matrix[i][j][0] / 10)) + (10 ** (power_matrix[i][j][1] / 10))
             )
     total_power_noma_dbm = 10 * math.log10(total_power_noma)
     if(total_power_noma_dbm > uav['max_power']):
-        print(f"PowerConstraintError(NOMA): required power {total_power_noma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_users}\n\t height={height} m\n")
+        print(f"PowerConstraintError(NOMA): required power {total_power_noma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_ues}\n\t height={height} m\n")
     
     # Calculate power efficiency of NOMA
-    pe_noma = 10 * math.log10(sum(th_data_rate) * 1e6/total_power_noma)
+    ee_noma = 10 * math.log10(sum(th_data_rate) * 1e6/total_power_noma)
 
 
 
@@ -126,17 +126,17 @@ def simulate(H_db, th_data_rate, height):
     )
     total_power_oma = 0
     if num_prb_per_user != 0:
-        for i in range(0, no_users):
+        for i in range(0, no_ues):
             total_power_oma += (10 ** (power_user[i] / 10)) * num_prb_per_user
     total_power_oma_dbm = 10 * math.log10(total_power_oma)
     if(total_power_oma_dbm > uav['max_power']):
-        print(f"PowerConstraintError(OMA): required power {total_power_oma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_users}\n\t height={height} m\n")
+        print(f"PowerConstraintError(OMA): required power {total_power_oma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_ues}\n\t height={height} m\n")
 
     # Calculate power efficiency of OMA
-    pe_oma = 10 * math.log10(sum(th_data_rate) * 1e6/total_power_oma)
+    ee_oma = 10 * math.log10(sum(th_data_rate) * 1e6/total_power_oma)
 
 
-    return (total_power_noma_dbm, total_power_oma_dbm, pe_noma, pe_oma)
+    return (total_power_noma_dbm, total_power_oma_dbm, ee_noma, ee_oma)
 
 
 
@@ -151,38 +151,38 @@ if __name__== '__main__':
         no_of_users = list()
         total_powers_noma = list()
         total_powers_oma = list()
-        pes_noma = list()
-        pes_oma = list()
+        ees_noma = list()
+        ees_oma = list()
 
         for i in range(20, 133, 10):
             # generating user locations
-            user_locations = generate_uniform_points_in_circle(i, system_parameters['cell_redius'])
-            H_db, th_data_Rate = generate_user_data(i, h, user_locations)
-            (total_power_noma, total_power_oma, pe_noma, pe_oma) = simulate(H_db, th_data_Rate, h)
+            ue_locations = generate_uniform_points_in_circle(i, system_parameters['cell_redius'])
+            H_db, th_data_Rate = generate_user_data(i, h, ue_locations)
+            (total_power_noma, total_power_oma, ee_noma, ee_oma) = simulate(H_db, th_data_Rate, h)
             no_of_users.append(i)
             total_powers_noma.append(total_power_noma)
             total_powers_oma.append(total_power_oma)
-            pes_noma.append(pe_noma)
-            pes_oma.append(pe_oma)
+            ees_noma.append(ee_noma)
+            ees_oma.append(ee_oma)
 
         average = math.fsum(total_powers_noma) / len(total_powers_noma)
         if average < best_average_total_power_noma_for_heights:
             best_average_total_power_noma_for_heights = average
-            power_data_for_optimal_height = (no_of_users, total_powers_noma, total_powers_oma, pes_noma, pes_oma)
+            power_data_for_optimal_height = (no_of_users, total_powers_noma, total_powers_oma, ees_noma, ees_oma)
             optimal_height = h
 
 
-    no_of_users, total_powers_noma, total_powers_oma, pes_noma, pes_oma = power_data_for_optimal_height
+    no_of_users, total_powers_noma, total_powers_oma, ees_noma, ees_oma = power_data_for_optimal_height
     print(f"Optimal Height for NOMA = {optimal_height} m")
     # Name of the CSV file
-    numberOfUsers_vs_power = 'data_numberOfUsers_vs_power.csv'
+    numberOfUsers_vs_power = 'data_numberOfUEs_vs_power.csv'
 
     # Write data to CSV
     with open(numberOfUsers_vs_power, mode='w', newline='') as file:
         writer = csv.writer(file)
         
         # Write the header
-        writer.writerow(['number_of_users', 'NOMA_total_power', 'OMA_total_power', 'NOMA_power_efficiency', 'OMA_power_efficiency'])
+        writer.writerow(['number_of_UEs', 'NOMA_total_power', 'OMA_total_power', 'NOMA_energy_efficiency', 'OMA_energy_efficiency'])
         
         # Write the data rows
         for i in range(len(no_of_users)):
@@ -190,8 +190,8 @@ if __name__== '__main__':
                 no_of_users[i],
                 total_powers_noma[i],
                 total_powers_oma[i],
-                pes_noma[i],
-                pes_oma[i]
+                ees_noma[i],
+                ees_oma[i]
             ])
 
     print(f"Data written to {numberOfUsers_vs_power} successfully!")
@@ -202,42 +202,42 @@ if __name__== '__main__':
     # Height vs Power with 40 users
     h_total_powers_noma_40 = list()
     h_total_powers_oma_40 = list()
-    h_pes_noma_40 = list()
-    h_pes_oma_40 = list()
+    h_ees_noma_40 = list()
+    h_ees_oma_40 = list()
 
     # generating user locations
-    h_user_locations_40 = generate_uniform_points_in_circle(40, system_parameters['cell_redius'])
+    h_ue_locations_40 = generate_uniform_points_in_circle(40, system_parameters['cell_redius'])
 
     for h in range(uav['min_height'], uav['max_height']+1, 10):
-        H_db_40, th_data_Rate_40 = generate_user_data(40, h, h_user_locations_40)
-        (h_total_power_noma_40, h_total_power_oma_40, h_pe_noma_40, h_pe_oma_40) = simulate(H_db_40, th_data_Rate_40, h)
+        H_db_40, th_data_Rate_40 = generate_user_data(40, h, h_ue_locations_40)
+        (h_total_power_noma_40, h_total_power_oma_40, h_ee_noma_40, h_ee_oma_40) = simulate(H_db_40, th_data_Rate_40, h)
         heights.append(h)
         h_total_powers_noma_40.append(h_total_power_noma_40)
         h_total_powers_oma_40.append(h_total_power_oma_40)
-        h_pes_noma_40.append(h_pe_noma_40)
-        h_pes_oma_40.append(h_pe_oma_40)
+        h_ees_noma_40.append(h_ee_noma_40)
+        h_ees_oma_40.append(h_ee_oma_40)
  
     # Height vs Power with 60 users
     h_total_powers_noma_60 = list()
     h_total_powers_oma_60 = list()
-    h_pes_noma_60 = list()
-    h_pes_oma_60 = list()
+    h_ees_noma_60 = list()
+    h_ees_oma_60 = list()
 
 
     # generating user locations
-    h_user_locations_60 = generate_uniform_points_in_circle(60, system_parameters['cell_redius'])
+    h_ue_locations_60 = generate_uniform_points_in_circle(60, system_parameters['cell_redius'])
 
     for h in range(uav['min_height'], uav['max_height']+1, 10):
-        H_db_60, th_data_Rate_60 = generate_user_data(60, h, h_user_locations_60)
-        (h_total_power_noma_60, h_total_power_oma_60, h_pe_noma_60, h_pe_oma_60) = simulate(H_db_60, th_data_Rate_60, h)
+        H_db_60, th_data_Rate_60 = generate_user_data(60, h, h_ue_locations_60)
+        (h_total_power_noma_60, h_total_power_oma_60, h_ee_noma_60, h_ee_oma_60) = simulate(H_db_60, th_data_Rate_60, h)
         h_total_powers_noma_60.append(h_total_power_noma_60)
         h_total_powers_oma_60.append(h_total_power_oma_60)
-        h_pes_noma_60.append(h_pe_noma_60)
-        h_pes_oma_60.append(h_pe_oma_60)
+        h_ees_noma_60.append(h_ee_noma_60)
+        h_ees_oma_60.append(h_ee_oma_60)
 
 
     # Name of the CSV file
-    height_vs_powerEfficiency = 'data_height_vs_powerEfficiency.csv'
+    height_vs_powerEfficiency = 'data_height_vs_energyEfficiency.csv'
 
    # Write data to CSV
     with open(height_vs_powerEfficiency, mode='w', newline='') as file:
@@ -249,10 +249,10 @@ if __name__== '__main__':
                          'NOMA_total_power_60', 
                          'OMA_total_power_40', 
                          'OMA_total_power_60', 
-                         'NOMA_power_efficiency_40', 
-                         'NOMA_power_efficiency_60', 
-                         'OMA_power_efficiency_40',
-                         'OMA_power_efficiency_60'])
+                         'NOMA_energy_efficiency_40', 
+                         'NOMA_energy_efficiency_60', 
+                         'OMA_energy_efficiency_40',
+                         'OMA_energy_efficiency_60'])
         
         # Write the data rows
         for i in range(len(heights)):
@@ -262,10 +262,10 @@ if __name__== '__main__':
                 h_total_powers_noma_60[i],
                 h_total_powers_oma_40[i],
                 h_total_powers_oma_60[i],
-                h_pes_noma_40[i],
-                h_pes_noma_60[i],
-                h_pes_oma_40[i],
-                h_pes_oma_60[i]
+                h_ees_noma_40[i],
+                h_ees_noma_60[i],
+                h_ees_oma_40[i],
+                h_ees_oma_60[i]
             ])
 
     print(f"Data written to {height_vs_powerEfficiency} successfully!")
