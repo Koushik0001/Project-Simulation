@@ -22,7 +22,7 @@ def noma_power_opt(PRB, b, sigma, H, R):
     H, R, users = zip(*sorted(zip(H, R, users)))
 
     for i in range(0, n):
-        x[i] = (R[i] / math.log10(abs(H[i])))
+        x[i] = (R[i] / abs(H[i]))
 
     sum_x = 0
     for i in range(0, n):
