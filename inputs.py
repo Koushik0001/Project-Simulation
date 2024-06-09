@@ -1,7 +1,5 @@
 uav = {
     'coordinate': (0, 0),
-    'height': 40,                      # in meters
-    'service_classes': [1, 3, 5, 20],   # data rate in different service classes
     'min_height': 10,                   # minimum height of the UAV
     'max_height': 130,                  # maximum height of the UAV
     'service_classes': [1, 3, 5, 25],   # data rate in different service classes
