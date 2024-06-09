@@ -36,7 +36,6 @@ def noma_power_opt(PRB, b, sigma, H, R):
     r = PRB
     k = 0
     l = math.ceil(n / 2)
-    count = n
 
     while r > 0 and sum(v[0:math.ceil(n/2)]) != 0 and sum(v[math.ceil(n/2): n]) != 0:
         
