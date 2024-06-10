@@ -20,8 +20,8 @@ plt.plot(data['number_of_UEs'], data['NOMA_total_power'], label='Non-exclusive c
 plt.plot(data['number_of_UEs'], data['ex-NOMA_total_power'], label='Exclusive clustering: NOMA', marker='o')
 plt.plot(data['number_of_UEs'], data['OMA_total_power'], label='No clustering: OMA', marker='s')
 plt.xlabel('Number of UEs')
-plt.ylabel('Total Power (dBm)')
-plt.title('Number of UEs vs Total Power')
+plt.ylabel('Total Transmit Power (dBm)')
+plt.title('Number of UEs vs Total Transmit Power')
 plt.legend()
 plt.savefig('Fig_UEs_vs_TotalPower.png')
 
