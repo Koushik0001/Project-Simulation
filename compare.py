@@ -128,6 +128,7 @@ def simulate(H_db, th_data_rate, height):
         H_db, 
         th_data_rate
     )
+    check_noma_possible(power_matrix_ex_NOMA, height=height, no_of_users=no_ues)
     total_power_ex_noma = 0
     for i in range(0, no_ues):
         for j in range(0, no_ues):
