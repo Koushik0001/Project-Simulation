@@ -9,6 +9,7 @@ from inputs import uav
 from inputs import environment_parameters, system_parameters
 from rician_factor import get_rician_factor
 import small_scale_fading as ssf
+from check_noma import check_noma_possible
 
 
 def generate_uniform_points_in_circle(n, r):
@@ -102,6 +103,8 @@ def simulate(H_db, th_data_rate, height):
         H_db, 
         th_data_rate
     )
+    check_noma_possible(power_matrix_NOMA, height=height, no_of_users=no_ues)
+
     total_power_noma = 0
     for i in range(0, no_ues):
         for j in range(0, no_ues):
@@ -109,8 +112,8 @@ def simulate(H_db, th_data_rate, height):
                 (10 ** (power_matrix_NOMA[i][j][0] / 10)) + (10 ** (power_matrix_NOMA[i][j][1] / 10))
             )
     total_power_noma_dbm = 10 * math.log10(total_power_noma)
-    if(total_power_noma_dbm > uav['max_power']):
-        print(f"PowerConstraintError(NOMA): required power {total_power_noma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_ues}\n\t height={height} m\n")
+    # if(total_power_noma_dbm > uav['max_power']):
+    #     print(f"PowerConstraintError(NOMA): required power {total_power_noma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_ues}\n\t height={height} m\n")
     
     # Calculate power efficiency of NOMA
     ee_noma = 10 * math.log10(sum(th_data_rate) * 1e6/total_power_noma)
@@ -134,8 +137,8 @@ def simulate(H_db, th_data_rate, height):
 
 
     total_power_ex_noma_dbm = 10 * math.log10(total_power_ex_noma)    
-    if(total_power_ex_noma_dbm > uav['max_power']):
-        print(f"PowerConstraintError(ex-NOMA): required power {total_power_ex_noma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_ues}\n\t height={height} m\n")
+    # if(total_power_ex_noma_dbm > uav['max_power']):
+    #     print(f"PowerConstraintError(ex-NOMA): required power {total_power_ex_noma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_ues}\n\t height={height} m\n")
     
     # Calculate power efficiency of exclusive NOMA
     ee_ex_noma = 10 * math.log10(sum(th_data_rate) * 1e6/total_power_ex_noma)
@@ -154,14 +157,15 @@ def simulate(H_db, th_data_rate, height):
         for i in range(0, no_ues):
             total_power_oma += (10 ** (power_user[i] / 10)) * num_prb_per_user
     total_power_oma_dbm = 10 * math.log10(total_power_oma)
-    if(total_power_oma_dbm > uav['max_power']):
-        print(f"PowerConstraintError(OMA): required power {total_power_oma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_ues}\n\t height={height} m\n")
+    # if(total_power_oma_dbm > uav['max_power']):
+    #     print(f"PowerConstraintError(OMA): required power {total_power_oma_dbm} dBm > avilable power {uav['max_power']} dBm \nfor\n\t users={no_ues}\n\t height={height} m\n")
 
     # Calculate power efficiency of OMA
     ee_oma = 10 * math.log10(sum(th_data_rate) * 1e6/total_power_oma)
 
 
     return (total_power_noma_dbm, total_power_oma_dbm, total_power_ex_noma_dbm, ee_noma, ee_oma, ee_ex_noma)
+    # return (power_matrix_NOMA, association_matrix_NOMA)
 
 
 

@@ -29,7 +29,11 @@ def noma_power_opt(PRB, b, sigma, H, R):
         sum_x += x[i]
 
     for i in range(0, n):
-        v[i] = math.ceil(x[i] * 2 * PRB / sum_x)
+        if(i < n/2):
+            v[i] = math.ceil(x[i] * 2 * PRB / sum_x)
+        else:
+            estimate = math.ceil(x[i] * 2 * PRB / sum_x)
+            v[i] = estimate if (R[i]/estimate) >= b else math.floor(R[i]/b)
     
 
     # User Clustering
@@ -56,7 +60,7 @@ def noma_power_opt(PRB, b, sigma, H, R):
         k += 1
         l += 1
 
-
+    
     # Power Allocation
 
     # Power Allocation - first user
